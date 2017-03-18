@@ -1,6 +1,3 @@
-
-
-
 #include "item.h"
 #include <mutex>
 #include <list>
@@ -11,10 +8,6 @@ using namespace std;
 
 namespace PCPProgram
 {
-
-
-
-
    typedef std::list<Item> ItemList;         // List of Item class
    typedef std::list<Item*> Skeleton;        // List of pointers to desired base clase
    typedef std::list<Skeleton> SkeletonList; // List of list of pointers to desired base class

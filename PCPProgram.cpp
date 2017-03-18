@@ -11,7 +11,6 @@ ItemList PCPSolver::root = ItemList();
 SkeletonList PCPSolver::tree = SkeletonList();
 SkeletonList PCPSolver::branch = SkeletonList();
 ConfigurationsMapping PCPSolver::knownConfigurations = ConfigurationsMapping();
-//list<Item> PCPProgram::root = new list<Domino>;
 
 bool canComplete(std::string top, std::string bot, int botMaxIncrease, int topMaxIncrease, int remainingTurns)
 {
@@ -100,56 +99,6 @@ bool PCPSolver::isCompletableItemDuplicate(ConfigurationsMapping& configs, std::
 
 }
 
-/*
-   if (top.length() > bot.length())
-   {
-      top.erase(0, bot.length());
-   }
-   else
-   {
-      bot.erase(0, top.length());
-   }
-
-   bool isDuplicate = false;
-   for (
-         ItemList::iterator iter = items.begin(), end = items.end();
-         !isDuplicate && iter != end;
-         ++iter
-       )
-   {
-      if ((iter->getTop() == top) && (iter->getBot() == bot))
-      {
-         isDuplicate = true;
-      }
-   }
-   return isDuplicate;
-   
-*/
-
-/*
-bool isDuplicate(SkeletonList& items, Skeleton& domino)
-{
-   // will this cause a race condition?
-   std::string itemLookingFor = reconstructItem(domino);   
-
-   bool isFound = false;
-   for (
-         SkeletonList::iterator iter = items.begin(),
-         end = items.end(); 
-         iter != end && !isFound;
-         ++iter
-       )
-   {
-      std::string currentItem = reconstructItem(*iter);
-
-      if (currentItem == itemLookingFor) // i'm sure it does the same as strcmp
-      {
-         isFound = true;
-      }
-   }
-   return isFound; 
-}
-*/
 bool insertAtEnd(SkeletonList& items, Skeleton& domino)
 {
    //insertLock.lock();
@@ -333,5 +282,6 @@ void PCPSolver::addToKnownConfigurations(std::string top, std::string bot)
       bot.erase(0, top.length());
       top = "";
    }
+   knownConfigurations.insert(std::pair<std::string,bool>(top + "," + bot, true));
 }
 } // end namespace PCPProgram

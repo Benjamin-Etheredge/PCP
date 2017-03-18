@@ -3,7 +3,6 @@
 
 namespace PCPProgram
 {
-
   unsigned short Item::numberOfItems = 0;
 
   // Constructor

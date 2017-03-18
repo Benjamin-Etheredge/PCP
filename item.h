@@ -1,9 +1,6 @@
-
-
 #include <string>
 namespace PCPProgram
 {
-
 // Class for holding information relating to PCP problems
 class Item
 {
