@@ -18,7 +18,6 @@ bool canComplete(std::string top, std::string bot, int botMaxIncrease, int topMa
    //cout << "in canComplete\n\n";
    bool canComplete = true;
 
-   //cout << top << " , " << bot << endl;
    // check if it has room to complete
    if (top.length() > bot.length())
    {
@@ -42,7 +41,6 @@ bool canComplete(std::string top, std::string bot, int botMaxIncrease, int topMa
          // do nothing
       }
    }
-
    if (canComplete) // dat short circuit
    {
       if(top.find(bot) != 0 && bot.find(top) != 0) // check if either string is a substring starting on position 0
@@ -51,7 +49,7 @@ bool canComplete(std::string top, std::string bot, int botMaxIncrease, int topMa
       }
       else
       {
-         // do nothing
+         // Do nothing.
       }
    }
    return canComplete;
@@ -254,7 +252,6 @@ void PCPSolver::readFile(string fileName)
          inFile >> top >> bot;
          //cout << top << "," << bot << endl;
          root.push_back(Item(top,bot));
-
       }
       // set up reamiaing turns
       // TODO
@@ -324,22 +321,17 @@ void PCPSolver::run(string fileName)
    cout << "NO SOLUTION FOUND" << endl;
 }// end function run
 
-   void PCPSolver::addToKnownConfigurations(std::string top, std::string bot)
+void PCPSolver::addToKnownConfigurations(std::string top, std::string bot)
+{
+   if (top.length() > bot.length())
    {
-
-
-
-      if (top.length() > bot.length())
-      {
-         top.erase(0, bot.length());
-         bot = "";
-      }
-      else
-      {
-         bot.erase(0, top.length());
-         top = "";
-      }
-
+      top.erase(0, bot.length());
+      bot = "";
    }
-
+   else
+   {
+      bot.erase(0, top.length());
+      top = "";
+   }
+}
 } // end namespace PCPProgram

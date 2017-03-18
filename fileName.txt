@@ -1,0 +1,4 @@
+80 3
+a b
+baa a
+b baa
