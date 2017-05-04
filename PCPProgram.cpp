@@ -65,7 +65,8 @@ std::string reconstructItem(Skeleton& item, string& top, string& bot)
    bot = "";
 
    for (
-         Skeleton::iterator iter = item.begin(), end = item.end();
+         Skeleton::iterator iter = item.begin(),
+               end = item.end();
          iter != end;
          ++iter
        )
@@ -99,10 +100,10 @@ bool PCPSolver::isCompletableItemDuplicate(ConfigurationsMapping& configs, std::
 
 }
 
-bool insertAtEnd(SkeletonList& items, Skeleton& domino)
+bool insertAtEnd(SkeletonList& items, Skeleton& domino, std::string config)
 {
    //insertLock.lock();
-   items.push_back(domino);
+   items.push_back(domino, config);
    //insertLock.unlock();
 }
 
@@ -127,8 +128,6 @@ Skeleton makeNewSkeleton(Item& rootItem, Skeleton& item)
   Skeleton tempDom(item);
   tempDom.push_back(&rootItem);
   return tempDom;
-
-
 }
 
 bool PCPSolver::generateBranch(Skeleton& partOfTree)
@@ -168,13 +167,10 @@ bool PCPSolver::generateBranches()
    int size = tree.size();
    while (size-- > 0) // should work? TODO: make sure it does
    {
-      //insertLock.lock();
-      //cout << "";
       generateBranch(tree.front());
       //delete &(tree.front());
       tree.front().clear();
       tree.pop_front(); // could be faster by not returning element?
-      //insertLock.unlock();
    }
 
    tree.swap(branch); // empty branches values into tree

@@ -10,7 +10,7 @@ namespace PCPProgram
 {
    typedef std::list<Item> ItemList;         // List of Item class
    typedef std::list<Item*> Skeleton;        // List of pointers to desired base clase
-   typedef std::list<Skeleton> SkeletonList; // List of list of pointers to desired base class
+   typedef std::list<pair<Skeleton,std::string> > SkeletonList; // List of list of pointers to desired base class
    typedef std::map<std::string,bool> ConfigurationsMapping;
    
   // typedef std::forward_list<KnownConfigurations;   
